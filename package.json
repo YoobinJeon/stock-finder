@@ -1,0 +1,25 @@
+{
+  "name": "stock-finder",
+  "version": "2.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client,dist -c blue,green,gray \"npm run dev -w server\" \"npm run dev -w client\" \"npm run build:watch -w client\"",
+    "build": "npm run build -w client && npm run build -w server",
+    "start": "npm run start -w server",
+    "serve": "npm run build -w client && npm run start -w server",
+    "pipeline": "npm run pipeline -w server",
+    "migrate": "npm run migrate -w server",
+    "test": "npm test -w server",
+    "typecheck": "npm run typecheck -w server && npx tsc --noEmit -p client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

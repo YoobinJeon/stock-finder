@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --sf-surface: 255 255 255;
+    --sf-gray-50: 249 250 251;
+    --sf-gray-100: 243 244 246;
+    --sf-gray-200: 229 231 235;
+    --sf-gray-300: 209 213 219;
+    --sf-gray-400: 156 163 175;
+    --sf-gray-500: 107 114 128;
+    --sf-gray-600: 75 85 99;
+    --sf-gray-700: 55 65 81;
+    --sf-gray-800: 31 41 55;
+    --sf-gray-900: 17 24 39;
+    --sf-blue-50: 239 246 255;
+    --sf-blue-100: 219 234 254;
+    --sf-blue-200: 191 219 254;
+    --sf-blue-300: 147 197 253;
+    --sf-blue-400: 96 165 250;
+    --sf-blue-500: 59 130 246;
+    --sf-blue-600: 37 99 235;
+    --sf-blue-700: 29 78 216;
+    --sf-red-50: 254 242 242;
+    --sf-red-100: 254 226 226;
+    --sf-red-200: 254 202 202;
+    --sf-red-400: 248 113 113;
+    --sf-red-500: 239 68 68;
+    --sf-red-600: 220 38 38;
+    --sf-red-700: 185 28 28;
+    --sf-amber-50: 255 251 235;
+    --sf-amber-100: 254 243 199;
+    --sf-amber-200: 253 230 138;
+    --sf-amber-300: 252 211 77;
+    --sf-amber-400: 251 191 36;
+    --sf-amber-500: 245 158 11;
+    --sf-amber-600: 217 119 6;
+    --sf-amber-700: 180 83 9;
+    --sf-amber-800: 146 64 14;
+    --sf-emerald-50: 236 253 245;
+    --sf-emerald-100: 209 250 229;
+    --sf-emerald-200: 167 243 208;
+    --sf-emerald-400: 52 211 153;
+    --sf-emerald-600: 5 150 105;
+    --sf-emerald-700: 4 120 87;
+    --sf-rose-50: 255 241 242;
+    --sf-rose-100: 255 228 230;
+    --sf-rose-200: 254 205 211;
+    --sf-rose-300: 253 164 175;
+    --sf-rose-500: 244 63 94;
+    --sf-sky-50: 240 249 255;
+    --sf-sky-100: 224 242 254;
+    --sf-sky-600: 2 132 199;
+    --sf-sky-700: 3 105 161;
+    --sf-green-100: 220 252 231;
+    --sf-green-600: 22 163 74;
+    --sf-green-700: 21 128 61;
+    --sf-yellow-100: 254 249 195;
+    --sf-yellow-700: 161 98 7;
+    --sf-purple-50: 250 245 255;
+    --sf-purple-400: 192 132 252;
+    --sf-purple-700: 126 34 206;
+    --sf-pink-400: 244 114 182;
+    --sf-orange-400: 251 146 60;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --sf-surface: 31 41 55;
+    --sf-gray-50: 17 24 39;
+    --sf-gray-100: 43 53 68;
+    --sf-gray-200: 55 65 81;
+    --sf-gray-300: 75 85 99;
+    --sf-gray-400: 156 163 175;
+    --sf-gray-500: 170 178 191;
+    --sf-gray-600: 195 202 212;
+    --sf-gray-700: 213 218 226;
+    --sf-gray-800: 229 231 235;
+    --sf-gray-900: 243 244 246;
+    --sf-blue-50: 30 47 77;
+    --sf-blue-100: 30 58 138;
+    --sf-blue-200: 30 64 175;
+    --sf-blue-300: 29 78 216;
+    --sf-blue-400: 96 165 250;
+    --sf-blue-500: 59 130 246;
+    --sf-blue-600: 59 130 246;
+    --sf-blue-700: 96 165 250;
+    --sf-red-50: 63 29 36;
+    --sf-red-100: 127 29 29;
+    --sf-red-200: 153 27 27;
+    --sf-red-400: 248 113 113;
+    --sf-red-500: 239 68 68;
+    --sf-red-600: 248 113 113;
+    --sf-red-700: 252 165 165;
+    --sf-amber-50: 58 42 18;
+    --sf-amber-100: 120 53 15;
+    --sf-amber-200: 146 64 14;
+    --sf-amber-300: 180 83 9;
+    --sf-amber-400: 251 191 36;
+    --sf-amber-500: 245 158 11;
+    --sf-amber-600: 251 191 36;
+    --sf-amber-700: 252 211 77;
+    --sf-amber-800: 253 230 138;
+    --sf-emerald-50: 11 46 37;
+    --sf-emerald-100: 6 78 59;
+    --sf-emerald-200: 6 95 70;
+    --sf-emerald-400: 52 211 153;
+    --sf-emerald-600: 52 211 153;
+    --sf-emerald-700: 110 231 183;
+    --sf-rose-50: 63 26 42;
+    --sf-rose-100: 136 19 55;
+    --sf-rose-200: 159 18 57;
+    --sf-rose-300: 190 18 60;
+    --sf-rose-500: 251 113 133;
+    --sf-sky-50: 12 44 64;
+    --sf-sky-100: 12 74 110;
+    --sf-sky-600: 56 189 248;
+    --sf-sky-700: 125 211 252;
+    --sf-green-100: 20 83 45;
+    --sf-green-600: 74 222 128;
+    --sf-green-700: 134 239 172;
+    --sf-yellow-100: 113 63 18;
+    --sf-yellow-700: 250 204 21;
+    --sf-purple-50: 49 22 77;
+    --sf-purple-400: 192 132 252;
+    --sf-purple-700: 192 132 252;
+    --sf-pink-400: 244 114 182;
+    --sf-orange-400: 251 146 60;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    @apply text-gray-900 antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+}

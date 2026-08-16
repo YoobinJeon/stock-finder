@@ -1,0 +1,44 @@
+# 환경변수 (절대 커밋 금지)
+.env
+.env.local
+.env.*.local
+server/.env
+client/.env.local
+
+# 의존성
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# 빌드 결과물
+dist/
+client/dist/
+server/dist/
+build/
+
+# 로그
+*.log
+logs/
+npm-debug.log*
+
+# OS 파일
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# TypeScript
+*.tsbuildinfo
+
+# 로컬 파일 DB (PGlite)
+server/data/
+
+# 에이전트·도구 로컬 설정
+.claude/
+.codex/
+.agents/
+.superpowers/
+.playwright-mcp/
