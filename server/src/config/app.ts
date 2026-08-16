@@ -140,16 +140,15 @@ export function createApp(): express.Application {
     app.get('*', (_req, res) => res.sendFile(path.join(clientDist, 'index.html')));
   }
 
-  // 전역 에러 핸들러 — 서버 측에는 항상 스택까지 남기고, 클라이언트에는 개발 모드에서만
-  // 메시지를 노출한다. 로깅이 없으면 asyncHandler가 삼킨 오류가 500만 남고 원인이 사라진다.
+  // 전역 에러 핸들러 — 스택은 **서버 로그에만** 남기고 클라이언트에는 일반 문구만 준다.
+  // 이전에는 `NODE_ENV !== 'production'`이면 err.message를 응답에 실어 보냈는데,
+  // 이 프로젝트의 실행 스크립트(dev·start·serve)는 어느 것도 NODE_ENV를 세팅하지 않는다 —
+  // 즉 실제로는 **항상** 내부 메시지가 노출되는 상태였다. 원인 파악에는 아래 logger.error가
+  // 스택까지 남기므로 충분하고, 그쪽이 응답 본문보다 안전하다.
   app.use((err: Error, req: express.Request, res: express.Response, _next: express.NextFunction) => {
     logger.error(`요청 처리 실패 ${req.method} ${req.originalUrl}`, err);
     if (res.headersSent) return;
-    const isProd = process.env.NODE_ENV === 'production';
-    res.status(500).json({
-      error: 'Internal Server Error',
-      ...(isProd ? {} : { message: err.message }),
-    });
+    res.status(500).json({ error: 'Internal Server Error' });
   });
 
   return app;

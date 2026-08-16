@@ -12,6 +12,8 @@ KOSPI·KOSDAQ 전 종목을 공개 데이터로 수집해 **팩터 점수로 스
 ## 빠른 시작
 
 ```bash
+git clone https://github.com/YoobinJeon/stock-finder.git
+cd stock-finder
 npm install
 npm run dev
 ```
@@ -19,8 +21,11 @@ npm run dev
 브라우저에서 <http://localhost:5173> 이 열립니다.
 
 1. 좌측 메뉴 **[🔄 데이터]** 로 이동
-2. **"시총 상위 200"** 선택 후 수집 시작 (약 2~3분)
+2. **"시총 상위 200"** 선택 후 수집 시작 (실측 **약 45초**)
 3. 수집이 끝나면 **[🔍 스크리너]** 에서 점수·필터로 종목을 걸러봅니다
+
+> 📖 **처음이시라면 [GETTING_STARTED.md](GETTING_STARTED.md) 를 보세요** —
+> 데이터 수집부터 화면별 사용 순서, 자주 막히는 곳까지 정리했습니다.
 
 DB는 별도 설치가 필요 없습니다 — [PGlite](https://pglite.dev)(파일 기반 임베디드 Postgres)를
 쓰며 데이터는 `server/data/` 에 저장됩니다.
@@ -161,6 +166,20 @@ DB        PGlite (@electric-sql/pglite) — 파일 기반 임베디드 Postgres
 
 외부 웹사이트를 스크레이핑하므로 **소스 측 HTML·API가 바뀌면 파서가 깨질 수 있습니다.**
 동작을 보장하지 않습니다.
+
+**최종 검증 2026-08-16** (깨끗한 클론 기준): typecheck 오류 0 · 테스트 826건 통과 ·
+빌드 성공 · `top200` 수집 44초 200/200 실패 0 · 화면 API 18종 정상.
+상세는 [GETTING_STARTED.md](GETTING_STARTED.md#검증-이력-2026-08-16-깨끗한-클론) 참고.
+
+### 알려진 의존성 취약점
+
+스냅샷 시점의 `package-lock.json` 에 남아 있는 항목입니다. 전부 **메이저 버전 업그레이드가
+필요해** 적용하지 않았습니다 — 포크해서 쓰신다면 직접 올리시길 권합니다.
+
+| 패키지 | 등급 | 영향 범위 |
+|---|---|---|
+| `vite`, `esbuild` | high / moderate | **개발 서버 전용.** `npm run serve` 는 미리 빌드된 정적 파일을 Express로 서빙하므로 운영 경로에는 해당 없음 |
+| `react-router`, `react-router-dom` | moderate | `<Link>`·`useNavigate` 의 백슬래시 오픈 리다이렉트. 이 코드베이스는 이동 대상이 전부 하드코딩 경로라 **도달 경로 없음** |
 
 ---
 
